@@ -23,7 +23,6 @@ const Dashboard = () => {
     { headerName: "Price", field: "price" },
   ]);
 
-  // Custom cell renderer for Outcome column
   function outcomeCellRenderer(params) {
     return params.value ? "Success" : "Failure";
   }
@@ -39,16 +38,18 @@ const Dashboard = () => {
   );
 
   // AG-Charts configuration
+  const chartOutcome = Object.entries(chartData).map(([outcome, count]) => ({
+    outcome,
+    count,
+  }));
+  
   const chartOptions = {
-    data: Object.entries(chartData).map(([outcome, count]) => ({
-      outcome,
-      count,
-    })),
+    data: chartOutcome.map(({ outcome, count }) => ({ outcome, count })),
     series: [
       {
         type: "pie",
         angleKey: "count",
-        labelKey: "outcome",
+        legendItemKey: "outcome",
       },
     ],
   };

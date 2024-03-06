@@ -1,0 +1,12 @@
+h2 {
+    color: #333;
+  }
+  
+  .ag-theme-alpine {
+    height: 400px;
+  }
+  
+  .chart-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }

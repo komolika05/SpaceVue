@@ -1,3 +1,9 @@
+.login-container h2{
+  text-align: center;
+  margin-top: 80px;
+  color:chocolate;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -24,6 +30,7 @@ form {
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color: #ffd700;
+    color: black;
   }
   

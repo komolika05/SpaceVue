@@ -1,7 +1,19 @@
-h2 {
-    color: #333;
+.dashboard-container h2 {
+    color: #3a9bf6;
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  .dashboard-container p{
+    font-size: small;
+    font-weight: 400;
+    margin-bottom: 0;
+    margin-left: 10px;
   }
   
+  .ag-theme-quartz{
+    padding: auto;
+  }
   .ag-theme-alpine {
     height: 400px;
   }
@@ -10,3 +22,16 @@ h2 {
     max-width: 600px;
     margin: 0 auto;
   }
+
+  .chart-container h2{
+    color: crimson;
+  }
+
+  .ag-header-row{
+    color: brown;
+    font-weight: 600;
+  }
+.ag-header-cell:hover{
+cursor: pointer;
+color :rgb(201, 163, 25);
+}

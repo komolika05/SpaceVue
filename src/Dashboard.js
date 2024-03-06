@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { AgChartsReact } from "ag-charts-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import "./Dashboard.css";
+import { fetchMissionsData } from "./api";
 
-const Dashboard = ({ spaceMissions }) => {
-  const [rowData, setRowData] = useState(spaceMissions);
-
+const Dashboard = () => {
+  const [rowData, setRowData] = useState([]);
   const [columnDefs, setColumnDefs] = useState([
     { headerName: "Mission", field: "mission" },
     { headerName: "Company", field: "company" },
@@ -29,7 +29,7 @@ const Dashboard = ({ spaceMissions }) => {
   }
 
   // Chart data
-  const chartData = spaceMissions.reduce(
+  const chartData = rowData.reduce(
     (result, mission) => {
       const outcome = mission.successful ? "Success" : "Failure";
       result[outcome] = (result[outcome] || 0) + 1;
@@ -52,17 +52,30 @@ const Dashboard = ({ spaceMissions }) => {
       },
     ],
   };
+  async function fetchData() {
+    const missionsData = await fetchMissionsData();
 
+    if (missionsData) {
+      setRowData(missionsData);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div className="dashboard-container">
       <h2>SpaceVue Dashboard</h2>
-      <div
-        className="ag-theme-quartz" // applying the grid theme
-        style={{ height: 500 }} // the grid will fill the size of the parent container
-      >
-        <AgGridReact columnDefs={columnDefs} rowData={rowData} />
+      <p>*click on the labels to sort the data</p>
+      <div className="ag-theme-quartz" style={{ height: 500, padding: 10 }}>
+        <AgGridReact
+          className="columnDefs"
+          columnDefs={columnDefs}
+          rowData={rowData}
+        />
       </div>
       <div className="chart-container">
+        <h2>Successful vs Unsuccessful Missions</h2>
         <AgChartsReact options={chartOptions} />
       </div>
     </div>

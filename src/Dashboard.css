@@ -16,17 +16,25 @@
   }
   .ag-theme-alpine {
     height: 400px;
+    width: 80%;
   }
-  
+  .vs h2{
+    color: crimson;
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+
   .chart-container {
     max-width: 600px;
-    margin: 0 auto;
+    width: 400px;
+    margin: 60px auto;
+    display: flex;
+    justify-content: space-around;
   }
 
-  .chart-container h2{
-    color: crimson;
+  .chart-container .bar{
+    width: 60px;
   }
-
   .ag-header-row{
     color: brown;
     font-weight: 600;

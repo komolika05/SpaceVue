@@ -27,7 +27,6 @@ const Dashboard = () => {
     return params.value ? "Success" : "Failure";
   }
 
-  // Chart data
   const chartData = rowData.reduce(
     (result, mission) => {
       const outcome = mission.successful ? "Success" : "Failure";
@@ -37,19 +36,32 @@ const Dashboard = () => {
     { Success: 0, Failure: 0 }
   );
 
-  // AG-Charts configuration
   const chartOutcome = Object.entries(chartData).map(([outcome, count]) => ({
     outcome,
     count,
   }));
-  
-  const chartOptions = {
+
+  const chartOptionsPie = {
     data: chartOutcome.map(({ outcome, count }) => ({ outcome, count })),
     series: [
       {
         type: "pie",
         angleKey: "count",
         legendItemKey: "outcome",
+      },
+    ],
+  };
+  const chartOptionsBar = {
+    data: Object.entries(chartData).map(([outcome, count]) => ({
+        outcome,
+        count,
+      })),
+    series: [
+      {
+        type: "bar",
+        xKey: "outcome",
+        yKey: "count",
+        yName: "outcome",
       },
     ],
   };
@@ -74,10 +86,13 @@ const Dashboard = () => {
           columnDefs={columnDefs}
           rowData={rowData}
         />
-      </div>
+          </div>
+          <div className="vs">
+              <h2>Successful vs Unsuccessful Missions</h2>
+              </div>
       <div className="chart-container">
-        <h2>Successful vs Unsuccessful Missions</h2>
-        <AgChartsReact options={chartOptions} />
+        <AgChartsReact options={chartOptionsPie} />
+        <AgChartsReact className='bar' options={chartOptionsBar} />
       </div>
     </div>
   );

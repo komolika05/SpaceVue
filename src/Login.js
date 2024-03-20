@@ -31,6 +31,7 @@ const Login = () => {
         </label>
         <button type="button" onClick={handleLogin}>Login</button>
       </form>
+      <p className='details'>** Username : demo | Password : 1234</p>
     </div>
   );
 };

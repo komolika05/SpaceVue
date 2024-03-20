@@ -34,3 +34,8 @@ form {
     color: black;
   }
   
+  .details{
+    text-align: center;
+    margin-top: 4%;
+    font-size: smaller;
+  }

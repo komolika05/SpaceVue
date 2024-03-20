@@ -53,9 +53,9 @@ const Dashboard = () => {
   };
   const chartOptionsBar = {
     data: Object.entries(chartData).map(([outcome, count]) => ({
-        outcome,
-        count,
-      })),
+      outcome,
+      count,
+    })),
     series: [
       {
         type: "bar",
@@ -86,13 +86,13 @@ const Dashboard = () => {
           columnDefs={columnDefs}
           rowData={rowData}
         />
-          </div>
-          <div className="vs">
-              <h2>Successful vs Unsuccessful Missions</h2>
-              </div>
+      </div>
+      <div className="vs">
+        <h2>Successful vs Unsuccessful Missions</h2>
+      </div>
       <div className="chart-container">
         <AgChartsReact options={chartOptionsPie} />
-        <AgChartsReact className='bar' options={chartOptionsBar} />
+        <AgChartsReact options={chartOptionsBar} />
       </div>
     </div>
   );

@@ -1,19 +1,19 @@
 // Login.js
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
-import './Login.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate(); 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (username === 'demo' && password === '1234') {
-      navigate('/dashboard');
+    if (username === "demo" && password === "1234") {
+      navigate("/dashboard");
     } else {
-      alert('Invalid credentials. Please try again.');
+      alert("Invalid credentials. Please try again.");
     }
   };
 
@@ -23,15 +23,29 @@ const Login = () => {
       <form>
         <label>
           Username:
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </label>
         <label>
           Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </label>
-        <button type="button" onClick={handleLogin}>Login</button>
+        <button type="button" onClick={handleLogin}>
+          Login
+        </button>
       </form>
-      <p className='details'>** Username : demo | Password : 1234</p>
+      <div className="details">
+        <p>
+          ** Username : demo <br /> Password : 1234
+        </p>
+      </div>
     </div>
   );
 };
